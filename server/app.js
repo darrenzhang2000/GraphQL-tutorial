@@ -8,12 +8,12 @@ const app = express()
 
 //when you make a request to /graphql, you want to tell the server to use the 
 //graphqlHTTP object which knows how to handle gql requests
-app.use('./graphql', graphqlHTTP({ //schemas are needed so you know what data you want back
-    schema
+app.use('/graphql', graphqlHTTP({ //schemas are needed so you know what data you want back
+    schema,
+    graphiql: true //graphiql is a very useful tool for debugging
 }))
 
 app.listen(4000, ()=>{
     console.log('listening at port 4000')
 })
-
 
