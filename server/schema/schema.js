@@ -6,7 +6,8 @@ const {
     GraphQLString, 
     GraphQLSchema, 
     GraphQLID,
-    GraphQLInt
+    GraphQLInt,
+    GraphQLList
 } = graphql
 
 // dummy data
@@ -24,6 +25,11 @@ var authors = [
 
 const BookType = new GraphQLObjectType({
     name: "Book",
+    /* Need to wrap everything inside of fields in a function 
+    because we AuthorType is defined AFTER this block of code.
+    Without (), there would be an error saying authorId not defined.
+    Using a function delays makes it so that the code inside the function
+    runs only after everything else is defined.*/
     fields: () => ({
         id: { type: GraphQLID },
         name: { type: GraphQLString },
@@ -37,28 +43,18 @@ const BookType = new GraphQLObjectType({
     }),
 });
 
-// const BookType = new GraphQLObjectType({
-//     name: 'Book',
-//     fields: ( ) => ({
-//         id: { type: GraphQLID },
-//         name: { type: GraphQLString },
-//         genre: { type: GraphQLString },
-//         author: {
-//             type: AuthorType,
-//             resolve(parent, args){
-//                 console.log(parent);
-//                 return _.find(authors, { id: parent.authorId });
-//             }
-//         }
-//     })
-// });
-
 const AuthorType = new GraphQLObjectType({
     name: "Author",
     fields: () => ({
         id: { type: GraphQLID },
         name: { type: GraphQLString },
         age: { type: GraphQLInt},
+        books: { 
+            type: GraphQLList(BookType),
+            resolve(parent, args){
+                return _.filter(books, { authorId: parent.id})
+            }
+        }
      })
 
 })
