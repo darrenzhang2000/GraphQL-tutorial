@@ -3,8 +3,16 @@ const express = require('express')
 //this is like a supercharged endpoint where you send all of your queries
 const graphqlHTTP = require('express-graphql') 
 const schema = require('./schema/schema')
+const mongoose = require('mongoose')
 
 const app = express()
+
+//connect with mongoose- make sure there is an instance of mongoose db running
+//i used mongoose atlas
+mongoose.connect('mongodb+srv://darren:test123@cluster0-eajys.mongodb.net/test?retryWrites=true&w=majority')
+mongoose.connection.once('open', ()=> {
+    console.log('connected to database')
+})
 
 //when you make a request to /graphql, you want to tell the server to use the 
 //graphqlHTTP object which knows how to handle gql requests
