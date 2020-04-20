@@ -16,7 +16,7 @@ Database
 ![image](https://user-images.githubusercontent.com/44158788/79810211-832afe80-8340-11ea-92b0-4cd46341d2c0.png)
 
 
-
+Steps to set up backend:
 1. set up express server
 2. set up graphQL http object to handle requests sent to /graphqldocum
     * include the schema, which tells you the shape of the documents
