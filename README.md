@@ -11,6 +11,12 @@ Server (Node.js)
 Database
 - MongoDB
 
+![image](https://user-images.githubusercontent.com/44158788/79810188-76a6a600-8340-11ea-9b92-8e00a885139d.png)
+
+![image](https://user-images.githubusercontent.com/44158788/79810211-832afe80-8340-11ea-92b0-4cd46341d2c0.png)
+
+
+
 1. set up express server
 2. set up graphQL http object to handle requests sent to /graphqldocum
     * include the schema, which tells you the shape of the documents
