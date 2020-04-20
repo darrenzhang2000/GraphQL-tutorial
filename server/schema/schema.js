@@ -9,7 +9,8 @@ const {
     GraphQLSchema, 
     GraphQLID,
     GraphQLInt,
-    GraphQLList
+    GraphQLList,
+    GraphQLNonNull
 } = graphql
 
 // dummy data
@@ -33,9 +34,9 @@ const BookType = new GraphQLObjectType({
     Using a function delays makes it so that the code inside the function
     runs only after everything else is defined.*/
     fields: () => ({
-        id: { type: GraphQLID },
-        name: { type: GraphQLString },
-        genre: { type: GraphQLString },
+        id: { type: new GraphQLNonNull(GraphQLID) },
+        name: { type: new GraphQLNonNull(GraphQLString) },
+        genre: { type: new GraphQLNonNull(GraphQLString) },
         author: { 
             type: AuthorType,
             resolve(parent, args){
@@ -50,9 +51,9 @@ const BookType = new GraphQLObjectType({
 const AuthorType = new GraphQLObjectType({
     name: "Author",
     fields: () => ({
-        id: { type: GraphQLID },
-        name: { type: GraphQLString },
-        age: { type: GraphQLInt},
+        id: { type: new GraphQLNonNull(GraphQLID) },
+        name: { type: new GraphQLNonNull(GraphQLString) },
+        age: { type: new GraphQLNonNull(GraphQLInt)},
         books: { 
             type: GraphQLList(BookType),
             resolve(parent, args){
@@ -135,8 +136,8 @@ const Mutation = new GraphQLObjectType({
         addBook: {
             type: BookType,
             args: {
-                name: {type: GraphQLString}, 
-                genre: {type: GraphQLString}, 
+                name: {type: new GraphQLNonNull(GraphQLString)}, 
+                genre: {type: new GraphQLNonNull(GraphQLString)}, 
                 authorId: {type: GraphQLID}
             },
             resolve(parent, args){
@@ -151,8 +152,8 @@ const Mutation = new GraphQLObjectType({
         addAuthor: {
             type: AuthorType,
             args: {
-                name: {type: GraphQLString},
-                age: {type: GraphQLInt}                
+                name: {type: new GraphQLNonNull(GraphQLString)},
+                age: {type: new GraphQLNonNull(GraphQLInt)}                
             }, 
             resolve(parent, args){
                 let newAuthor = new Author({
