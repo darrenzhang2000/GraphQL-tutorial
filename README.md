@@ -2,7 +2,10 @@
 
 Structure of this app:
 Client (browser)
-- Graphical
+- Graphical (temporary substitute for backend development) - Replaced with React and Apollo
+- React 
+- Apollo - lets the frontend talk to the gql server
+    - Apollo creates 
 
 Server (Node.js)
 - Express App
@@ -33,3 +36,11 @@ To use schemas, we have to pass into mongoose.model(modelName, schema),
 GQL guide:
 queries and mutations have fields
 GraphQLNonNull enforces the user pass in information for specified fields
+
+
+Apollo Guide:
+https://www.apollographql.com/docs/react/get-started/
+1. Install apollo-boost
+2. import ApolloClient 
+3. create an instance of ApolloClient while passing in the uri: "http://localhost:4000/graphql"
+4. wrap the app component using ApolloProvider, while passing in the client 
