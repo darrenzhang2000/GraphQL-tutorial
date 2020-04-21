@@ -8,18 +8,6 @@ const client = new ApolloClient({
 })
 
 class App extends Component {
-    // componentDidMount = () => {
-    //     client.query({
-    //         query: gql`
-    //             {
-    //                 books {
-    //                     name
-    //                 }
-    //             }
-    //         `,
-    //     }).then(data => console.log(data))
-    //     .catch(error => console.error(error));
-    // }
     render() {
         return (
             <div id="main">
