@@ -51,6 +51,7 @@ https://www.apollographql.com/docs/react/get-started/
 3. create an instance of ApolloClient while passing in the uri: "http://localhost:4000/graphql"
 4. wrap the app component using ApolloProvider, while passing in the client 
 5. create the book gql query using gql`` and bind it to the component using higher ordered function graphql
+    - the returned data is attached to the data prop
 
 
 cors:
