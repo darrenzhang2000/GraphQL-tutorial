@@ -1,15 +1,15 @@
 import React, { Component } from "react"
-import { gql } from "apollo-boost"
 import { graphql } from "react-apollo"
+import { getBooksQuery } from "../queries/queries"
 
-const getBooksQuery = gql`
-    {
-        books {
-            name
-            id
-        }
-    }
-`
+// const getBooksQuery = gql`
+//     {
+//         books {
+//             name
+//             id
+//         }
+//     }
+// `
 class BookList extends Component {
     displayBooks() {
         var data = this.props.data
@@ -32,5 +32,5 @@ class BookList extends Component {
     }
 }
 
-//binds the query to BookList, which is
+//binds the query results (this.props.data) to BookList, which is
 export default graphql(getBooksQuery)(BookList)
