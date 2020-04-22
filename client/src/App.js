@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import BookList from "./components/BookList"
-import ApolloClient, { gql } from "apollo-boost"
+import ApolloClient from "apollo-boost"
 import { ApolloProvider } from "react-apollo"
 import AddBook from "./components/AddBook"
 

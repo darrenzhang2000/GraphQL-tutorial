@@ -5,7 +5,6 @@ Client (browser)
 - Graphical (temporary substitute for backend development) - Replaced with React and Apollo
 - React 
 - Apollo - lets the frontend talk to the gql server
-    - Apollo creates 
 
 Server (Node.js)
 - Express App
@@ -52,6 +51,13 @@ https://www.apollographql.com/docs/react/get-started/
 4. wrap the app component using ApolloProvider, while passing in the client 
 5. create the book gql query using gql`` and bind it to the component using higher ordered function graphql
     - the returned data is attached to the data prop
+6. If we want to use a second query (like addBook mutation) inside a component, we first have to create the query and then in the component, use compose to bind both queries to the component. 
+    - import { flowRight as compose } from "lodash"
+    - export default compose(
+    graphql(getAuthorsQuery, { name: "getAuthorsQuery" }),
+    graphql(addBookMutation, { name: "addBookMutation" }) )(AddBook)
+    - data also needs to be changed from this.props.data to this.props.getAuthorsQuery
+
 
 
 cors:
@@ -62,3 +68,4 @@ Add this to the backend:
 const app = express()
 app.use(cors())
 ```
+
