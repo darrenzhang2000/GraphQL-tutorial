@@ -30,6 +30,13 @@ class AddBook extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault()
+        this.props.addBookMutation({
+            variables: {
+                name: this.state.name,
+                genre: this.state.genre,
+                authorId: this.state.authorId,
+            },
+        })
     }
 
     render() {

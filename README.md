@@ -57,6 +57,8 @@ https://www.apollographql.com/docs/react/get-started/
     graphql(getAuthorsQuery, { name: "getAuthorsQuery" }),
     graphql(addBookMutation, { name: "addBookMutation" }) )(AddBook)
     - data also needs to be changed from this.props.data to this.props.getAuthorsQuery
+7. use query variables to pass in book name, genre, and authorId for addBook mutation
+    - when calling the mutation, pass in name, genre, and authorId in an object called variables
 
 
 
