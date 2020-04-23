@@ -59,7 +59,9 @@ https://www.apollographql.com/docs/react/get-started/
     - data also needs to be changed from this.props.data to this.props.getAuthorsQuery
 7. use query variables to pass in book name, genre, and authorId for addBook mutation
     - when calling the mutation, pass in name, genre, and authorId in an object called variables
-
+    - adding data to the database does not automatically refresh the 
+    ui. To automatically update UI with added book, all we have to do is
+    pass in refetchQueries followed by a list of queries you want to refetch. 
 
 
 cors:
